@@ -106,56 +106,88 @@
   - Intersection of law, technology, and finance
 
 #### Portfolio/Projects
-- **Project Showcase Grid:**
+
+**Launch Strategy:** "Ghost Page" Approach
+- Build complete project showcase infrastructure
+- Feature Gamma Options article as primary content piece
+- Design project card components ready to populate
+- Include filtering system (All / Blockchain / Data Science / Research / Development)
+- Add messaging: "More projects coming soon - currently making repositories presentable"
+- Infrastructure ready for easy addition of projects as they become available
+
+**Future Projects to Add (Post-Launch):**
   - **Optimum VM Memory Visualization (Hackathon Winner)**
     - Shiny (R) app for real-time VM memory transfers
     - Technologies: R, Shiny, GossipSub
-    - Link to demo/repo
-  - **Gamma Options Launch Article**
-    - DeFi options exchange analysis
-    - Vol-range AMM, lending/borrowing mechanics, tokenomics
-    - Link to article (when published)
+    - Will add once repo is polished and public
   - **Digital Asset Risk Assessment Framework (Fireblocks)**
     - Risk criteria for proof-of-stake tokens
     - Multi-Party Computation (MPC) integration analysis
-    - Case study format
+    - Case study format (repo may remain private)
   - **Liquid Fund Research (TRGC)**
     - $10M fund pitch deck development
     - Market analysis of 20+ tokens
     - Portfolio optimization research
+    - Case study format (repo may remain private)
   - **Blockchain Governance Research (NEU)**
     - Comparative analysis: DAOs vs. hybrid vs. centralized governance
     - Governance token evaluation framework
-    - Research paper link
+    - Will add research paper when complete
   - **Community Content (Optimum)**
     - Technical explainers on RLN and memory layers
     - Community education materials
-- **Filters:** All / Blockchain / Data Science / Research / Development
-- Each project card includes:
+    - May showcase as blog posts or project write-ups
+
+**Launch Content:**
+  - **Gamma Options Launch Article** (Featured)
+    - DeFi options exchange deep-dive
+    - Vol-range AMM mechanics, lending/borrowing, tokenomics analysis
+    - Note: "Originally written for Gamma Options launch (pre-shutdown)"
+    - Demonstrates: DeFi knowledge, technical writing, protocol analysis
+
+**Project Card Components Include:**
   - Title and subtitle
-  - Description
+  - Description/summary
   - Technologies/tools used
+  - Category tags
   - Links (live demo, GitHub repo, article, case study)
   - Screenshots or demo GIFs
+  - "Coming Soon" state for placeholder cards
 
 #### Blog/Writing
-- **Featured Publications:**
-  - "Communication—The Often-Overlooked Keystone to Mergers and Acquisitions" (The Legal Intelligencer, June 2024)
-  - "AI Use Is Exploding—Companies and Law Firms Must Set Clear Guidelines, Expectations" (The Legal Intelligencer, October 2023)
-- **Medium Blog Integration:**
-  - Sync or manually add blog posts from Medium
-  - Categories: Blockchain, DeFi, Data Science, Governance, Legal Tech, AI
-  - Tags for filtering
-- **Original Writing:**
-  - Technical deep-dives
-  - Protocol analysis
-  - Research insights
-  - Industry commentary
-- **Features:**
-  - Reading time estimates
-  - Publication date
-  - External links to original publications
-  - Syntax highlighting for code snippets
+
+**Launch Strategy:** "Ghost Page" Approach
+- Build complete blog infrastructure (MDX setup, post templates, listing page)
+- Feature existing publications and Gamma Options article
+- Include "More posts coming soon" messaging
+- Infrastructure ready to add new posts as Medium drafts are published
+
+**Launch Content:**
+- **Gamma Options Launch Article** (Featured, New)
+  - DeFi options exchange analysis
+  - Originally written for Gamma Options (pre-shutdown)
+  - Demonstrates expertise in DeFi, tokenomics, protocol mechanics
+- **"Communication—The Often-Overlooked Keystone to Mergers and Acquisitions"**
+  - The Legal Intelligencer, June 2024
+  - Link to original publication
+- **"AI Use Is Exploding—Companies and Law Firms Must Set Clear Guidelines, Expectations"**
+  - The Legal Intelligencer, October 2023
+  - Link to original publication
+
+**Future Content (Post-Launch):**
+- 4 Medium drafts currently in progress (will add when published)
+- Additional planned posts on blockchain, DeFi, data science, governance
+- Technical deep-dives and protocol analysis
+- Research insights and industry commentary
+
+**Blog Features:**
+- Reading time estimates
+- Publication date and category tags
+- Categories: Blockchain, DeFi, Data Science, Governance, Legal Tech, AI
+- External links to original publications (when applicable)
+- Syntax highlighting for code snippets
+- Clean, readable typography
+- Social sharing buttons (Twitter, LinkedIn, copy link)
 
 #### Resume/CV
 - **Interactive Web Version:**
@@ -179,9 +211,9 @@
 - **Social/Professional Links:**
   - LinkedIn: linkedin.com/in/justinwender
   - Medium: medium.com/@justin.wender
-  - GitHub: [TBD]
-  - X/Twitter: [TBD]
-  - Telegram: [TBD]
+  - GitHub: github.com/justinwender
+  - X/Twitter: @wenderjustin (x.com/wenderjustin)
+  - Telegram: @justintod (t.me/justintod)
 - **Contact Form:**
   - Name, Email, Subject, Message
   - Integration with email service
@@ -641,9 +673,9 @@ Package Manager: npm or pnpm
 **Footer Icons (All Pages):**
 - **Medium:** medium.com/@justin.wender ✓
 - **LinkedIn:** linkedin.com/in/justinwender ✓
-- **GitHub:** [Need username]
-- **X (Twitter):** [Need handle]
-- **Telegram:** [Need handle or link]
+- **GitHub:** github.com/justinwender ✓
+- **X (Twitter):** @wenderjustin ✓
+- **Telegram:** @justintod ✓
 
 **Icon Style:**
 - Circular or rounded square backgrounds
@@ -798,63 +830,92 @@ Package Manager: npm or pnpm
 
 ---
 
-## 12. Decisions Made & Questions to Clarify
+## 12. Final Decisions & Implementation Strategy
 
-### ✅ Decisions Made (Based on Requirements)
+### ✅ All Decisions Finalized
 
 1. **Primary Goal:** Get hired by crypto companies (startups, VCs, fintechs, asset managers) or data science roles (quant, consulting)
 2. **Unique Value Prop:** Dual expertise in blockchain/crypto + data science/economics, plus strong communication skills (published author)
 3. **Design:** Light color scheme with green/blue-purple accents, interactive particle effects
-4. **Tech Stack:** Next.js + Tailwind CSS + react-tsparticles (recommended)
-5. **Blog:** Yes, integrate existing Medium posts + write new content
-6. **Custom Domain:** Yes (recommended for professionalism)
+4. **Tech Stack:** Next.js + Tailwind CSS + react-tsparticles (start simple, can upgrade to Three.js later)
+5. **Custom Domain:** justinwender.com (already purchased from Cloudflare) ✓
+6. **Social Media Links:** ✓
+   - GitHub: justinwender
+   - X (Twitter): @wenderjustin
+   - Telegram: @justintod
+   - LinkedIn: /in/justinwender
+   - Medium: @justin.wender
 
-### ❓ Questions to Clarify
+### 📋 Content Strategy Adjustments
 
-**Before starting development:**
+**Projects Section - "Ghost Page" Approach:**
+- Build complete project showcase structure and UI
+- Design project card components ready to populate
+- For now, feature Gamma Options article as primary showcase
+- Add filtering/category system (ready for future projects)
+- Include clear CTAs: "More projects coming soon" or similar
+- Once repos are ready (Optimum Shiny app, etc.), can easily slot them in
+- **Rationale:** Better to launch with solid foundation and add projects than delay launch
 
-1. **GitHub Username:** What's your GitHub username for profile link and social icon?
+**Blog/Writing Section - "Ghost Page" Approach:**
+- Build complete blog infrastructure (MDX setup, post templates, listing page)
+- Feature Gamma Options article as first major piece
+- Include The Legal Intelligencer publications (already published)
+- Design allows easy addition of new posts once Medium drafts are polished
+- Set up proper metadata, syntax highlighting, reading time (all ready to go)
+- **Rationale:** Launch with existing publications, add new content as it's ready
 
-2. **Twitter/X Handle:** What's your X (Twitter) handle?
+**Gamma Options Article:**
+- Ready to publish ✓
+- Will be featured prominently in Writing section
+- Note: "Originally written for Gamma Options launch (pre-shutdown)"
+- Great showcase of DeFi knowledge and technical writing
 
-3. **Telegram:** What's your Telegram username or link?
+**Professional Photo:**
+- High-quality headshot provided ✓
+- Professional setting, good lighting, neutral background
+- Perfect for About page and possible homepage
 
-4. **Domain Name Preference:**
-   - Do you already own a domain?
-   - Preference: `justinwender.com`, `jtwender.com`, `justintwender.com`, or other?
+### 🎯 Revised MVP Scope
 
-5. **Project Repository Access:**
-   - Is your Optimum Shiny app code in a public GitHub repo?
-   - Can other projects (Fireblocks work, TRGC research) be shared publicly, or should they be described without code?
+**What We'll Build Now (Phase 1 Launch):**
+1. ✅ **Homepage:** Hero with particles, quick stats, CTAs, social links
+2. ✅ **About Page:** Full bio, experience timeline, skills showcase
+3. ✅ **Projects Page:** Complete UI with Gamma Options article featured, structure ready for future additions
+4. ✅ **Writing/Blog Page:** Gamma Options + Legal Intelligencer articles, infrastructure for new posts
+5. ✅ **Resume Page:** Interactive web version + downloadable PDF
+6. ✅ **Contact Page:** Form, contact info, social links
 
-6. **Medium Content:**
-   - How many Medium posts do you have?
-   - Should all be migrated or just featured ones?
-   - Preference: Link to Medium vs. full content on site?
+**What We'll Add Post-Launch (Phase 2):**
+- Optimum Shiny app project (when repo is presentable)
+- Other project showcases (Fireblocks, TRGC, NEU research)
+- New Medium blog posts (as drafts are published)
+- Additional features (dark mode, filtering, search, etc.)
 
-7. **Gamma Options Article:**
-   - Is this article ready to publish on your site?
-   - Or should it be listed as "in progress"?
+### ⏱️ Timeline & Approach
 
-8. **Professional Photo:**
-   - Do you have a professional headshot ready to use?
-   - If not, will you take one or use a placeholder initially?
+**Target:** Launch within next month
+**Philosophy:** Quality over speed
+**Strategy:** Launch solid foundation, iterate and add content as ready
+**Tech Learning:** Code will be well-commented for easy understanding (Java/Python/R background will help)
 
-9. **Particle Effect Preference:**
-   - Simple 2D particles (react-tsparticles) or more complex 3D (Three.js)?
-   - Preference for particle style: connected network nodes, floating particles, constellation, or other?
+### 🔧 Technical Notes
 
-10. **Timeline:**
-    - When do you need this live?
-    - Any upcoming interviews or events where you'd want to share the link?
+**Domain Setup:**
+- Domain: justinwender.com (Cloudflare)
+- Will need to configure DNS to point to Vercel
+- Cloudflare DNS management (instructions to follow)
 
-11. **Development Involvement:**
-    - Are you comfortable with Next.js/React, or should I keep it simple?
-    - Would you like to be able to easily add blog posts yourself?
+**Content Management:**
+- Easy to add new projects: just add new MDX file or JSON entry
+- Easy to add new blog posts: add MDX file in `/content/blog`
+- Well-structured for non-React developers to understand
 
-12. **Content Priority:**
-    - Which projects are most important to showcase first?
-    - Priority order: Optimum hackathon, Fireblocks, TRGC, or research?
+**Particle Effects:**
+- Start with react-tsparticles (easier, proven)
+- Test 2-3 different configurations
+- Can upgrade to Three.js later if desired
+- Will optimize for performance
 
 ---
 
@@ -877,76 +938,155 @@ Package Manager: npm or pnpm
 
 ## 14. Immediate Next Steps
 
-### Before Development Begins
+### ✅ Pre-Development Completed
 
-1. **Answer clarifying questions** (Section 12)
-   - Provide social media handles (GitHub, X, Telegram)
-   - Decide on domain name
-   - Clarify project visibility (public repos vs. case studies)
-   - Determine timeline and priorities
+1. ✅ **Planning finalized**
+   - All questions answered
+   - Social media handles confirmed
+   - Domain purchased (justinwender.com)
+   - Content strategy decided (ghost pages for projects/blog)
 
-2. **Content Preparation**
-   - Gather professional headshot
-   - Screenshot Optimum Shiny app (or prepare demo GIF)
-   - Export resume as PDF
-   - Review and select Medium posts to feature
-   - Draft short and long bio versions
+2. ✅ **Assets gathered**
+   - Professional headshot ready
+   - Resume information available
+   - Gamma Options article ready to publish
+   - Legal Intelligencer articles linked
 
-3. **Design Reference**
-   - Review crypto industry sites for particle effect inspiration:
-     - Uniswap.org
-     - Aave.com
-     - Optimism.io
-     - Arbitrum.io
-   - Finalize color palette specifics
-   - Choose fonts from recommended list
+### 🚀 Ready to Start Development
 
-4. **Technical Setup**
-   - Purchase/configure domain
-   - Create Vercel account (if needed)
-   - Set up Formspree or EmailJS for contact form
+**Immediate Actions:**
 
-### Development Phases (After Planning)
+1. **Initialize Next.js Project**
+   - Set up Next.js 14/15 with App Router
+   - Configure Tailwind CSS with custom colors
+   - Set up project structure
 
-**Phase 1: Foundation (Week 1)**
-- [ ] Initialize Next.js project
-- [ ] Set up Tailwind CSS
-- [ ] Configure fonts and base styles
-- [ ] Create basic page structure and routing
-- [ ] Set up Git repository (already done)
+2. **Configure Domain & Hosting**
+   - Set up Vercel account
+   - Connect GitHub repository
+   - Configure Cloudflare DNS to point to Vercel
+   - Set up SSL certificate
 
-**Phase 2: Hero & Particles (Week 1-2)**
-- [ ] Implement particle effect (react-tsparticles)
-- [ ] Create hero section with intro
-- [ ] Add social media icons to footer
-- [ ] Test performance and mobile responsiveness
+3. **Content Preparation**
+   - Draft short bio for homepage
+   - Draft long bio for About page
+   - Export resume as PDF for download
+   - Prepare Gamma Options article in markdown/MDX format
+   - Gather links to Legal Intelligencer articles
 
-**Phase 3: Core Pages (Week 2-3)**
-- [ ] Build About page with bio and timeline
-- [ ] Create Portfolio/Projects showcase
-- [ ] Set up Resume page with download
-- [ ] Implement Contact form
+4. **Design Decisions**
+   - Finalize exact color codes for green/blue-purple palette
+   - Choose specific fonts (recommend: Inter for both headings and body)
+   - Select particle effect configuration to test first
 
-**Phase 4: Blog/Writing (Week 3-4)**
-- [ ] Set up MDX for blog posts
-- [ ] Convert/add Medium articles
-- [ ] Create blog listing and individual post pages
-- [ ] Add syntax highlighting and formatting
+### Development Phases - Revised for Ghost Page Approach
 
-**Phase 5: Polish & Launch (Week 4-5)**
-- [ ] Add animations and transitions
-- [ ] SEO optimization (meta tags, sitemap)
-- [ ] Accessibility audit
-- [ ] Performance testing
-- [ ] Deploy to Vercel
-- [ ] Configure custom domain
+**Phase 1: Foundation & Setup (Days 1-3)**
+- [ ] Initialize Next.js 14/15 project with App Router
+- [ ] Set up Tailwind CSS with custom color palette
+- [ ] Configure fonts (Inter for headings and body)
+- [ ] Create basic page structure and routing (/, /about, /projects, /writing, /resume, /contact)
+- [ ] Set up component architecture
+- [ ] Configure Vercel and connect to GitHub
+- [ ] Set up Cloudflare DNS for justinwender.com
 
-**Phase 6: Post-Launch**
-- [ ] Monitor analytics
-- [ ] Gather feedback
-- [ ] Iterate on design/content
+**Phase 2: Homepage & Particles (Days 4-7)**
+- [ ] Implement particle effect with react-tsparticles
+- [ ] Test 2-3 particle configurations
+- [ ] Create hero section with name, tagline, CTA buttons
+- [ ] Add quick stats/highlights section
+- [ ] Build site-wide footer with social icons
+- [ ] Test performance on mobile and desktop
+- [ ] Optimize particle count for different devices
+
+**Phase 3: Core Pages - Part 1 (Days 8-12)**
+- [ ] Build About page:
+  - [ ] Narrative biography section
+  - [ ] Experience timeline
+  - [ ] Skills showcase (Blockchain/Web3, Data Science, Tools)
+  - [ ] Add professional headshot
+- [ ] Build Resume page:
+  - [ ] Interactive web version with experience/education
+  - [ ] Skills matrix visualization
+  - [ ] PDF download functionality
+  - [ ] Export current resume as PDF
+
+**Phase 4: Core Pages - Part 2 (Days 13-17)**
+- [ ] Build Projects page ("ghost page" ready):
+  - [ ] Project showcase grid with filtering
+  - [ ] Feature Gamma Options article prominently
+  - [ ] Design project card components (ready for future projects)
+  - [ ] Add "More projects coming soon" messaging
+  - [ ] Build scalable architecture for easy project additions
+- [ ] Build Contact page:
+  - [ ] Contact form with validation (React Hook Form + Zod)
+  - [ ] Integrate Formspree/EmailJS for submissions
+  - [ ] Display contact info and social links
+  - [ ] Add success/error states
+
+**Phase 5: Writing/Blog Section (Days 18-21)**
+- [ ] Set up MDX infrastructure:
+  - [ ] Configure next-mdx-remote
+  - [ ] Set up content directory structure
+  - [ ] Add syntax highlighting (rehype-highlight)
+  - [ ] Create blog post template components
+- [ ] Add content:
+  - [ ] Convert Gamma Options article to MDX
+  - [ ] Add Legal Intelligencer article links
+  - [ ] Create blog listing page
+  - [ ] Create individual blog post pages
+  - [ ] Add reading time estimates
+
+**Phase 6: Polish & Animations (Days 22-26)**
+- [ ] Add Framer Motion animations:
+  - [ ] Page transitions
+  - [ ] Scroll-triggered animations (fade-in, slide-up)
+  - [ ] Hover effects on cards and buttons
+  - [ ] Smooth transitions between sections
+- [ ] Polish UI:
+  - [ ] Consistent spacing and alignment
+  - [ ] Card shadows and hover states
+  - [ ] Loading states and skeletons
+  - [ ] Mobile menu (if needed)
+
+**Phase 7: SEO & Accessibility (Days 27-29)**
+- [ ] SEO optimization:
+  - [ ] Set up next-seo with meta tags
+  - [ ] Add Open Graph tags
+  - [ ] Create Twitter Card tags
+  - [ ] Generate sitemap.xml
+  - [ ] Add robots.txt
+  - [ ] Implement structured data (Schema.org)
+- [ ] Accessibility audit:
+  - [ ] Test keyboard navigation
+  - [ ] Add ARIA labels where needed
+  - [ ] Check color contrast ratios
+  - [ ] Test with screen reader
+  - [ ] Ensure focus indicators are visible
+
+**Phase 8: Testing & Launch (Days 30-35)**
+- [ ] Performance testing:
+  - [ ] Run Lighthouse audits (target: >90 performance, >95 accessibility)
+  - [ ] Optimize images (WebP format, lazy loading)
+  - [ ] Test on 4G connection
+  - [ ] Check bundle sizes
+- [ ] Cross-browser testing (Chrome, Firefox, Safari, Edge)
+- [ ] Mobile device testing (iOS and Android)
+- [ ] Fix any bugs or issues
+- [ ] Final domain configuration
+- [ ] Deploy to production on Vercel
+- [ ] Test all functionality on live site
+- [ ] Share with friends/colleagues for feedback
+
+**Phase 9: Post-Launch (Ongoing)**
+- [ ] Set up analytics (Vercel Analytics or Plausible)
+- [ ] Monitor performance and errors
+- [ ] Gather feedback from visitors
+- [ ] Add Optimum Shiny app project (when ready)
+- [ ] Add other projects as repos become presentable
+- [ ] Publish Medium blog posts (as drafts are finalized)
 - [ ] Plan dark mode implementation
-- [ ] Add advanced features (filtering, search, etc.)
+- [ ] Add advanced features (search, filtering, comments, etc.)
 
 ---
 
@@ -1035,6 +1175,20 @@ Package Manager: npm or pnpm
 
 ---
 
-**Document Version:** 2.0
+**Document Version:** 3.0 - FINAL
 **Created:** January 23, 2026
-**Last Updated:** January 23, 2026 (Updated with specific requirements)
+**Last Updated:** January 23, 2026
+**Status:** ✅ Planning Complete - Ready for Development
+
+### Summary of Finalized Decisions
+
+- **Domain:** justinwender.com (Cloudflare) ✓
+- **Social Media:** All handles confirmed (GitHub, X, Telegram, LinkedIn, Medium) ✓
+- **Professional Photo:** High-quality headshot provided ✓
+- **Content Strategy:** Ghost pages for Projects and Blog (launch with foundation, add content as ready) ✓
+- **Timeline:** ~1 month, quality over speed ✓
+- **Tech Stack:** Next.js + Tailwind CSS + react-tsparticles ✓
+- **Design:** Light theme with green/blue-purple accents, interactive particles ✓
+- **MVP Scope:** Full site with Gamma Options article featured, infrastructure ready for future additions ✓
+
+**Next Action:** Begin Phase 1 - Initialize Next.js project and set up development environment
