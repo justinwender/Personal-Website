@@ -71,15 +71,16 @@ export default function CustomParticles() {
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-        // Mouse interaction - attract to cursor
+        // Mouse interaction - subtle repel from cursor
         const dx = mouse.x - particle.x;
         const dy = mouse.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 150) {
-          const force = (150 - distance) / 150;
-          particle.vx += (dx / distance) * force * 0.02;
-          particle.vy += (dy / distance) * force * 0.02;
+        if (distance < 180) {
+          const force = (180 - distance) / 180;
+          // Negative force to push particles away from cursor
+          particle.vx -= (dx / distance) * force * 0.03;
+          particle.vy -= (dy / distance) * force * 0.03;
         }
 
         // Limit velocity
