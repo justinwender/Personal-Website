@@ -87,14 +87,13 @@ export default function CustomParticles() {
 
         if (distance < 180) {
           const force = (180 - distance) / 180;
-          // Very gentle force - feels like subtle gravity, not slingshot
-          particle.vx += (dx / distance) * force * 0.008;
-          particle.vy += (dy / distance) * force * 0.008;
+          // Boosted force for noticeable interaction
+          particle.vx += (dx / distance) * force * 0.02;
+          particle.vy += (dy / distance) * force * 0.02;
         }
 
-        // Gradually return to base velocity (original calm state)
-        // TESTING: Very strong return force to see if it's working
-        const returnForce = 0.15; // Cranked up from 0.02 for testing
+        // Gradually return to base velocity (calm down after interaction)
+        const returnForce = 0.08; // Balanced to calm particles over ~1-2 seconds
         particle.vx += (particle.baseVx - particle.vx) * returnForce;
         particle.vy += (particle.baseVy - particle.vy) * returnForce;
 
