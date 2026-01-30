@@ -73,12 +73,14 @@
   - Interactive particle effects background (cursor-responsive)
   - Name: Justin T. Wender
   - Tagline: "Blockchain Researcher • Data Scientist • Creative Technologist"
-  - Subtitle highlighting dual expertise (Crypto + Data Science)
-- **Quick Stats/Highlights:**
-  - Northeastern University (BS + MS, 3.9 GPA)
-  - President, NEU Blockchain Club
-  - Published Author (The Legal Intelligencer)
-  - Optimum Hackathon Winner
+- **Mission Statement (2-3 paragraphs):**
+  - Adapted from LinkedIn bio to be personal and engaging
+  - What drives me: curiosity, challenge, intersection of economics/tech/decentralization
+  - Current focus: MS in Economics & Data Science, DeFi/tokenomics expertise
+  - Leadership: President of NEU Blockchain, making Web3 accessible through research
+  - Values: Collaboration, strong communication, analytical rigor, goal-oriented approach
+  - Avoids redundancy with resume/other pages
+  - Gives readers a sense of who I am as a person
 - **CTA Buttons:**
   - View Projects
   - Read Writing
@@ -481,11 +483,13 @@ Package Manager: npm or pnpm
 
 #### Written Content
 
-**Short Bio (Hero/Home):**
+**Mission Statement (Hero/Home - 2-3 paragraphs):**
 - [ ] Tagline: "Blockchain Researcher • Data Scientist • Creative Technologist"
-- [ ] One-paragraph summary highlighting crypto + data science expertise
-- [ ] Current role: Technical Ambassador at Optimum, President of NEU Blockchain Club
-- [ ] Key achievement: Optimum Hackathon Winner
+- [ ] Paragraph 1: Driven by curiosity and passion for complex problems at intersection of economics, technology, decentralized systems. Currently pursuing MS in Economics & Data Science at Northeastern.
+- [ ] Paragraph 2: As President of NEU Blockchain, leading team to make Web3 accessible through research. Work spans protocol analysis, governance design, risk assessment.
+- [ ] Paragraph 3: Thrive in collaborative environments. Whether analyzing tokenomics, researching governance, or building tools, committed to adding value through process-focused, goal-oriented approach.
+- [ ] Based on LinkedIn bio but adapted for website context
+- [ ] Personal and engaging, not resume-like
 
 **Long Bio (About Page):**
 - [ ] Academic journey: Politics, Philosophy, Economics → Economics & Data Science
