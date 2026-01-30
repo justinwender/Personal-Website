@@ -21,30 +21,33 @@ export default function ParticleBackground() {
         },
         background: {
           color: {
-            value: "transparent",
+            value: "#f0f0f0",
           },
         },
         fpsLimit: 120,
         particles: {
           color: {
-            value: "#4ADE80",
+            value: "#FF0000",
           },
           links: {
-            color: "#4ADE80",
-            distance: 150,
+            color: "#FF0000",
+            distance: 200,
             enable: true,
-            opacity: 0.5,
-            width: 2,
+            opacity: 1,
+            width: 5,
           },
           move: {
             enable: true,
-            speed: 2,
+            speed: 3,
           },
           number: {
-            value: 100,
+            value: 50,
+          },
+          opacity: {
+            value: 1,
           },
           size: {
-            value: 3,
+            value: 10,
           },
         },
       }}
