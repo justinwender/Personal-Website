@@ -71,21 +71,21 @@ export default function CustomParticles() {
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-        // Mouse interaction - attract to cursor (gentle)
+        // Mouse interaction - gentle gravitational pull
         const dx = mouse.x - particle.x;
         const dy = mouse.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < 180) {
           const force = (180 - distance) / 180;
-          // Reduced force for subtler interaction
-          particle.vx += (dx / distance) * force * 0.015;
-          particle.vy += (dy / distance) * force * 0.015;
+          // Very gentle force - feels like subtle gravity, not slingshot
+          particle.vx += (dx / distance) * force * 0.008;
+          particle.vy += (dy / distance) * force * 0.008;
         }
 
-        // Apply damping to calm particles down (friction)
-        particle.vx *= 0.98;
-        particle.vy *= 0.98;
+        // Strong damping - particles return to normal quickly
+        particle.vx *= 0.94;
+        particle.vy *= 0.94;
 
         // Limit velocity (reduced max speed)
         const maxSpeed = 1.5;
