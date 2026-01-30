@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Justin T. Wender | Blockchain Researcher & Data Scientist",
@@ -29,8 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        {children}
+      <body className="antialiased flex flex-col min-h-screen">
+        <Header />
+        <div className="flex-grow pt-16">{children}</div>
+        <Footer />
       </body>
     </html>
   );
