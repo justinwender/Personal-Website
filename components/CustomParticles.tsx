@@ -37,10 +37,8 @@ export default function CustomParticles() {
     // Colors from your palette
     const colors = ["#4ADE80", "#6EE7B7", "#818CF8", "#A78BFA", "#3B82F6"];
 
-    // Create particles
-    const particleCount = window.innerWidth < 768 ? 40 : 80;
-    particlesRef.current = Array.from({ length: particleCount }, () => {
-      // Original base velocity - nice gentle drift
+    // Helper function to create a new particle
+    const createParticle = (): Particle => {
       const baseVx = (Math.random() - 0.5) * 0.5;
       const baseVy = (Math.random() - 0.5) * 0.5;
       return {
@@ -53,7 +51,11 @@ export default function CustomParticles() {
         radius: Math.random() * 2 + 1,
         color: colors[Math.floor(Math.random() * colors.length)],
       };
-    });
+    };
+
+    // Create particles - increased by 20%
+    const particleCount = window.innerWidth < 768 ? 48 : 96;
+    particlesRef.current = Array.from({ length: particleCount }, createParticle);
 
     // Mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
@@ -79,6 +81,18 @@ export default function CustomParticles() {
         // Bounce off walls
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+
+        // Replace particle if it goes way out of bounds (safety mechanism)
+        const margin = 50;
+        if (
+          particle.x < -margin ||
+          particle.x > canvas.width + margin ||
+          particle.y < -margin ||
+          particle.y > canvas.height + margin
+        ) {
+          particles[i] = createParticle();
+          return;
+        }
 
         // Mouse interaction - gentle gravitational pull
         const dx = mouse.x - particle.x;
