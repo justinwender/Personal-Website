@@ -15,6 +15,10 @@ export default function ParticleBackground() {
       id="tsparticles"
       init={particlesInit}
       options={{
+        fullScreen: {
+          enable: false,
+          zIndex: 0,
+        },
         background: {
           color: {
             value: "transparent",
@@ -44,7 +48,10 @@ export default function ParticleBackground() {
           },
         },
       }}
-      className="absolute inset-0 -z-10"
+      className="absolute inset-0"
+      style={{
+        zIndex: 0,
+      }}
     />
   );
 }
