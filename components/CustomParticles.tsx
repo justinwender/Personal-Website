@@ -92,14 +92,10 @@ export default function CustomParticles() {
         }
 
         // Gradually return to base velocity (original calm state)
-        // This pulls particles back to their starting behavior over ~2-3 seconds
-        const returnForce = 0.02; // Adjust this to control return speed
+        // TESTING: Very strong return force to see if it's working
+        const returnForce = 0.15; // Cranked up from 0.02 for testing
         particle.vx += (particle.baseVx - particle.vx) * returnForce;
         particle.vy += (particle.baseVy - particle.vy) * returnForce;
-
-        // Mild damping to prevent oscillation
-        particle.vx *= 0.98;
-        particle.vy *= 0.98;
 
         // Limit velocity (reduced max speed)
         const maxSpeed = 1.5;
