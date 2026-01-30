@@ -37,12 +37,12 @@ export default function CustomParticles() {
     // Colors from your palette
     const colors = ["#4ADE80", "#6EE7B7", "#818CF8", "#A78BFA", "#3B82F6"];
 
-    // Create particles with VERY slow base velocities
+    // Create particles
     const particleCount = window.innerWidth < 768 ? 40 : 80;
     particlesRef.current = Array.from({ length: particleCount }, () => {
-      // Much smaller base velocity - particles barely drift when calm
-      const baseVx = (Math.random() - 0.5) * 0.1;
-      const baseVy = (Math.random() - 0.5) * 0.1;
+      // Original base velocity - nice gentle drift
+      const baseVx = (Math.random() - 0.5) * 0.5;
+      const baseVy = (Math.random() - 0.5) * 0.5;
       return {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -98,8 +98,8 @@ export default function CustomParticles() {
         particle.vx += (particle.baseVx - particle.vx) * returnForce;
         particle.vy += (particle.baseVy - particle.vy) * returnForce;
 
-        // Limit velocity (very low max speed to prevent accumulation)
-        const maxSpeed = 0.6;
+        // Limit velocity to reasonable speed
+        const maxSpeed = 1.2;
         const speed = Math.sqrt(particle.vx ** 2 + particle.vy ** 2);
         if (speed > maxSpeed) {
           particle.vx = (particle.vx / speed) * maxSpeed;
