@@ -2,8 +2,10 @@ import ParticleBackground from "@/components/ParticleBackground";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center p-8 overflow-hidden">
-      <ParticleBackground />
+    <main className="relative flex min-h-screen flex-col items-center justify-center p-8">
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <ParticleBackground />
+      </div>
       <div className="max-w-4xl mx-auto text-center relative" style={{ zIndex: 10 }}>
         <h1 className="text-5xl font-bold mb-4 text-text-primary">
           Justin T. Wender
