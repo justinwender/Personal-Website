@@ -87,18 +87,18 @@ export default function CustomParticles() {
 
         if (distance < 180) {
           const force = (180 - distance) / 180;
-          // Boosted force for noticeable interaction
-          particle.vx += (dx / distance) * force * 0.02;
-          particle.vy += (dy / distance) * force * 0.02;
+          // Original responsive force - particles clearly react to cursor
+          particle.vx += (dx / distance) * force * 0.03;
+          particle.vy += (dy / distance) * force * 0.03;
         }
 
-        // Gradually return to base velocity (calm down after interaction)
-        const returnForce = 0.08; // Balanced to calm particles over ~1-2 seconds
+        // Light return force - lets particles get excited but slowly calms them
+        const returnForce = 0.04; // Subtle calming over ~3-4 seconds
         particle.vx += (particle.baseVx - particle.vx) * returnForce;
         particle.vy += (particle.baseVy - particle.vy) * returnForce;
 
-        // Limit velocity to reasonable speed
-        const maxSpeed = 1.2;
+        // Limit velocity to original max speed
+        const maxSpeed = 1.5;
         const speed = Math.sqrt(particle.vx ** 2 + particle.vy ** 2);
         if (speed > maxSpeed) {
           particle.vx = (particle.vx / speed) * maxSpeed;
