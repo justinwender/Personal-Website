@@ -7,6 +7,8 @@ interface Particle {
   y: number;
   vx: number;
   vy: number;
+  baseVx: number; // Target velocity to return to
+  baseVy: number; // Target velocity to return to
   radius: number;
   color: string;
 }
@@ -37,14 +39,20 @@ export default function CustomParticles() {
 
     // Create particles
     const particleCount = window.innerWidth < 768 ? 40 : 80;
-    particlesRef.current = Array.from({ length: particleCount }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      radius: Math.random() * 2 + 1,
-      color: colors[Math.floor(Math.random() * colors.length)],
-    }));
+    particlesRef.current = Array.from({ length: particleCount }, () => {
+      const baseVx = (Math.random() - 0.5) * 0.5;
+      const baseVy = (Math.random() - 0.5) * 0.5;
+      return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: baseVx,
+        vy: baseVy,
+        baseVx, // Store original velocity
+        baseVy, // Store original velocity
+        radius: Math.random() * 2 + 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+      };
+    });
 
     // Mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
@@ -83,9 +91,15 @@ export default function CustomParticles() {
           particle.vy += (dy / distance) * force * 0.008;
         }
 
-        // Strong damping - particles return to normal quickly
-        particle.vx *= 0.94;
-        particle.vy *= 0.94;
+        // Gradually return to base velocity (original calm state)
+        // This pulls particles back to their starting behavior over ~2-3 seconds
+        const returnForce = 0.02; // Adjust this to control return speed
+        particle.vx += (particle.baseVx - particle.vx) * returnForce;
+        particle.vy += (particle.baseVy - particle.vy) * returnForce;
+
+        // Mild damping to prevent oscillation
+        particle.vx *= 0.98;
+        particle.vy *= 0.98;
 
         // Limit velocity (reduced max speed)
         const maxSpeed = 1.5;
