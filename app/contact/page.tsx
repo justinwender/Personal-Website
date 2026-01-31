@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xwppbbjr"; // You'll need to create this form at formspree.io
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xykjrdnd"; // You'll need to create this form at formspree.io
 const RATE_LIMIT_HOURS = 1;
 const RATE_LIMIT_KEY = "contact_form_last_submission";
 
