@@ -95,25 +95,52 @@ export default function CustomParticles() {
           particle.vy *= -1;
         }
 
-        // Mouse interaction - gentle gravitational pull
+        // Mouse interaction - strong slingshot effect
         const dx = mouse.x - particle.x;
         const dy = mouse.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 180) {
-          const force = (180 - distance) / 180;
-          // Original responsive force - particles clearly react to cursor
-          particle.vx += (dx / distance) * force * 0.03;
-          particle.vy += (dy / distance) * force * 0.03;
+        if (distance < 200) {
+          const force = (200 - distance) / 200;
+          // Stronger slingshot force for dramatic effect
+          particle.vx += (dx / distance) * force * 0.08;
+          particle.vy += (dy / distance) * force * 0.08;
         }
 
-        // Light return force - lets particles get excited but slowly calms them
-        const returnForce = 0.04; // Subtle calming over ~3-4 seconds
+        // Anti-clumping: repel particles that get too close
+        particles.forEach((otherParticle, j) => {
+          if (i === j) return;
+          const dx = particle.x - otherParticle.x;
+          const dy = particle.y - otherParticle.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 40 && dist > 0) {
+            const repelForce = (40 - dist) / 40 * 0.02;
+            particle.vx += (dx / dist) * repelForce;
+            particle.vy += (dy / dist) * repelForce;
+          }
+        });
+
+        // Center bias to prevent wall drift
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const toCenterX = centerX - particle.x;
+        const toCenterY = centerY - particle.y;
+        const centerDistance = Math.sqrt(toCenterX * toCenterX + toCenterY * toCenterY);
+
+        if (centerDistance > 0) {
+          const centerBias = 0.0005; // Very subtle pull toward center
+          particle.vx += (toCenterX / centerDistance) * centerBias;
+          particle.vy += (toCenterY / centerDistance) * centerBias;
+        }
+
+        // Quick reset force - particles calm down quickly
+        const returnForce = 0.12; // Fast reset after interaction
         particle.vx += (particle.baseVx - particle.vx) * returnForce;
         particle.vy += (particle.baseVy - particle.vy) * returnForce;
 
-        // Limit velocity to original max speed
-        const maxSpeed = 1.5;
+        // Higher max speed for slingshot effect
+        const maxSpeed = 2.5;
         const speed = Math.sqrt(particle.vx ** 2 + particle.vy ** 2);
         if (speed > maxSpeed) {
           particle.vx = (particle.vx / speed) * maxSpeed;
