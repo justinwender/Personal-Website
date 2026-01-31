@@ -145,10 +145,15 @@ export default function CustomParticles() {
           particle.vy -= repelForce;
         }
 
-        // Quick reset force - particles calm down quickly
-        const returnForce = 0.12; // Fast reset after interaction
+        // Reduced reset force - allow more dynamic movement
+        const returnForce = 0.03; // Gentle return, don't dampen too much
         particle.vx += (particle.baseVx - particle.vx) * returnForce;
         particle.vy += (particle.baseVy - particle.vy) * returnForce;
+
+        // Add continuous random perturbation to prevent settling
+        const brownianForce = 0.02;
+        particle.vx += (Math.random() - 0.5) * brownianForce;
+        particle.vy += (Math.random() - 0.5) * brownianForce;
 
         // Higher max speed for slingshot effect
         const maxSpeed = 2.5;
