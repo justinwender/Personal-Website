@@ -78,33 +78,33 @@ export default function CustomParticles() {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        // Bounce off walls with damping to prevent edge accumulation
+        // Bounce off walls with extra energy
         if (particle.x < 0) {
           particle.x = 0;
-          particle.vx *= -0.8; // Dampen on bounce
+          particle.vx *= -1.2; // Bouncy!
         } else if (particle.x > canvas.width) {
           particle.x = canvas.width;
-          particle.vx *= -0.8; // Dampen on bounce
+          particle.vx *= -1.2; // Bouncy!
         }
 
         if (particle.y < 0) {
           particle.y = 0;
-          particle.vy *= -0.8; // Dampen on bounce
+          particle.vy *= -1.2; // Bouncy!
         } else if (particle.y > canvas.height) {
           particle.y = canvas.height;
-          particle.vy *= -0.8; // Dampen on bounce
+          particle.vy *= -1.2; // Bouncy!
         }
 
-        // Mouse interaction - strong slingshot effect
+        // Mouse interaction - repel particles away from cursor
         const dx = mouse.x - particle.x;
         const dy = mouse.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < 200) {
           const force = (200 - distance) / 200;
-          // Stronger slingshot force for dramatic effect
-          particle.vx += (dx / distance) * force * 0.08;
-          particle.vy += (dy / distance) * force * 0.08;
+          // Push particles away from cursor
+          particle.vx -= (dx / distance) * force * 0.08;
+          particle.vy -= (dy / distance) * force * 0.08;
         }
 
         // Anti-clumping: repel particles that get too close
@@ -115,7 +115,7 @@ export default function CustomParticles() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 60 && dist > 0) {
-            const repelForce = (60 - dist) / 60 * 0.1;
+            const repelForce = (60 - dist) / 60 * 0.2;
             particle.vx += (dx / dist) * repelForce;
             particle.vy += (dy / dist) * repelForce;
           }
