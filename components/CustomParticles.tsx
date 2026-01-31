@@ -121,17 +121,28 @@ export default function CustomParticles() {
           }
         });
 
-        // Center bias to prevent wall drift
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const toCenterX = centerX - particle.x;
-        const toCenterY = centerY - particle.y;
-        const centerDistance = Math.sqrt(toCenterX * toCenterX + toCenterY * toCenterY);
+        // Wall repulsion - push particles away from edges
+        const wallMargin = 100; // Distance from wall to start repelling
 
-        if (centerDistance > 0) {
-          const centerBias = 0.015; // Stronger pull toward center
-          particle.vx += (toCenterX / centerDistance) * centerBias;
-          particle.vy += (toCenterY / centerDistance) * centerBias;
+        // Left wall
+        if (particle.x < wallMargin) {
+          const repelForce = (wallMargin - particle.x) / wallMargin * 0.05;
+          particle.vx += repelForce;
+        }
+        // Right wall
+        if (particle.x > canvas.width - wallMargin) {
+          const repelForce = (particle.x - (canvas.width - wallMargin)) / wallMargin * 0.05;
+          particle.vx -= repelForce;
+        }
+        // Top wall
+        if (particle.y < wallMargin) {
+          const repelForce = (wallMargin - particle.y) / wallMargin * 0.05;
+          particle.vy += repelForce;
+        }
+        // Bottom wall
+        if (particle.y > canvas.height - wallMargin) {
+          const repelForce = (particle.y - (canvas.height - wallMargin)) / wallMargin * 0.05;
+          particle.vy -= repelForce;
         }
 
         // Quick reset force - particles calm down quickly
