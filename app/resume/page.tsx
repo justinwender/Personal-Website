@@ -13,7 +13,7 @@ export default function Resume() {
             </p>
           </div>
           <a
-            href="/resume.pdf"
+            href="/Wender_Justin_Resume.pdf"
             download="Justin_Wender_Resume.pdf"
             className="flex items-center gap-2 px-6 py-3 bg-primary-green text-white font-semibold
                      rounded-lg hover:bg-primary-green-dark transition-colors duration-200 whitespace-nowrap"
