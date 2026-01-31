@@ -111,28 +111,44 @@ export default function CustomParticles() {
           particle.vy -= (dy / distance) * force * 0.08;
         }
 
-        // Wall repulsion - push particles away from edges with stronger force
-        const wallMargin = 150; // Distance from wall to start repelling
+        // Wall repulsion - push particles away from edges
+        const wallMargin = 100; // Distance from wall to start repelling
 
         // Left wall
         if (particle.x < wallMargin) {
-          const repelForce = (wallMargin - particle.x) / wallMargin * 0.2;
+          const repelForce = (wallMargin - particle.x) / wallMargin * 0.05;
           particle.vx += repelForce;
         }
         // Right wall
         if (particle.x > canvas.width - wallMargin) {
-          const repelForce = (particle.x - (canvas.width - wallMargin)) / wallMargin * 0.2;
+          const repelForce = (particle.x - (canvas.width - wallMargin)) / wallMargin * 0.05;
           particle.vx -= repelForce;
         }
         // Top wall
         if (particle.y < wallMargin) {
-          const repelForce = (wallMargin - particle.y) / wallMargin * 0.2;
+          const repelForce = (wallMargin - particle.y) / wallMargin * 0.05;
           particle.vy += repelForce;
         }
         // Bottom wall
         if (particle.y > canvas.height - wallMargin) {
-          const repelForce = (particle.y - (canvas.height - wallMargin)) / wallMargin * 0.2;
+          const repelForce = (particle.y - (canvas.height - wallMargin)) / wallMargin * 0.05;
           particle.vy -= repelForce;
+        }
+
+        // Random turbulence to prevent settling into equilibrium
+        particle.vx += (Math.random() - 0.5) * 0.08;
+        particle.vy += (Math.random() - 0.5) * 0.08;
+
+        // Occasionally change direction more dramatically
+        if (Math.random() < 0.02) {
+          particle.vx += (Math.random() - 0.5) * 0.4;
+          particle.vy += (Math.random() - 0.5) * 0.4;
+        }
+
+        // Vary the base velocity target over time to prevent static equilibrium
+        if (Math.random() < 0.005) {
+          particle.baseVx = (Math.random() - 0.5) * 0.8;
+          particle.baseVy = (Math.random() - 0.5) * 0.8;
         }
 
         // Reduced reset force - allow more dynamic movement
