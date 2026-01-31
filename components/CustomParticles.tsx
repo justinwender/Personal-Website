@@ -11,6 +11,7 @@ interface Particle {
   baseVy: number; // Target velocity to return to
   radius: number;
   color: string;
+  minSpeed: number; // Minimum speed to maintain
 }
 
 export default function CustomParticles() {
@@ -41,6 +42,8 @@ export default function CustomParticles() {
     const createParticle = (): Particle => {
       const baseVx = (Math.random() - 0.5) * 0.8;
       const baseVy = (Math.random() - 0.5) * 0.8;
+      // Random minimum speed between 0.3 and 0.6 for each particle
+      const minSpeed = 0.3 + Math.random() * 0.3;
       return {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -50,6 +53,7 @@ export default function CustomParticles() {
         baseVy, // Store original velocity
         radius: Math.random() * 2 + 1,
         color: colors[Math.floor(Math.random() * colors.length)],
+        minSpeed, // Each particle has its own minimum speed
       };
     };
 
@@ -150,17 +154,23 @@ export default function CustomParticles() {
         particle.vx += (particle.baseVx - particle.vx) * returnForce;
         particle.vy += (particle.baseVy - particle.vy) * returnForce;
 
-        // Add continuous random perturbation to prevent settling
-        const brownianForce = 0.02;
-        particle.vx += (Math.random() - 0.5) * brownianForce;
-        particle.vy += (Math.random() - 0.5) * brownianForce;
-
-        // Higher max speed for slingshot effect
+        // Enforce speed limits - both minimum and maximum
         const maxSpeed = 2.5;
         const speed = Math.sqrt(particle.vx ** 2 + particle.vy ** 2);
+
         if (speed > maxSpeed) {
+          // Cap at maximum speed
           particle.vx = (particle.vx / speed) * maxSpeed;
           particle.vy = (particle.vy / speed) * maxSpeed;
+        } else if (speed < particle.minSpeed && speed > 0) {
+          // Boost to minimum speed if too slow
+          particle.vx = (particle.vx / speed) * particle.minSpeed;
+          particle.vy = (particle.vy / speed) * particle.minSpeed;
+        } else if (speed === 0) {
+          // If completely stopped, give random direction at minimum speed
+          const angle = Math.random() * Math.PI * 2;
+          particle.vx = Math.cos(angle) * particle.minSpeed;
+          particle.vy = Math.sin(angle) * particle.minSpeed;
         }
 
         // Draw particle
