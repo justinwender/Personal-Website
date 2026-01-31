@@ -28,11 +28,11 @@ const config: Config = {
         },
         background: {
           DEFAULT: '#0F172A',       // Dark slate background
-          dark: '#020617',          // Darker slate for cards/sections
-          card: '#1E293B',          // Slate 800 for card backgrounds
+          dark: '#020617',          // Darker slate for tags/sections
+          card: '#334155',          // Slate 700 for card backgrounds (lighter for better readability)
         },
         border: {
-          DEFAULT: '#334155',       // Slate 700 for borders
+          DEFAULT: '#475569',       // Slate 600 for borders
         }
       },
       fontFamily: {

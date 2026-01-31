@@ -57,8 +57,8 @@ export default function CustomParticles() {
       };
     };
 
-    // Create particles - increased by 20%
-    const particleCount = window.innerWidth < 768 ? 48 : 96;
+    // Create particles - optimized count for performance and aesthetics
+    const particleCount = window.innerWidth < 768 ? 36 : 72;
     particlesRef.current = Array.from({ length: particleCount }, createParticle);
 
     // Mouse move handler
