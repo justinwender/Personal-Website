@@ -6,9 +6,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --foreground-rgb: 17, 24, 39;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 249, 250, 251;
+  --background-start-rgb: 5, 10, 20;
+  --background-end-rgb: 15, 23, 42;
 }
 
 body {
