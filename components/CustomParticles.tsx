@@ -78,21 +78,21 @@ export default function CustomParticles() {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        // Bounce off walls - clamp position and reverse velocity
+        // Bounce off walls with damping to prevent edge accumulation
         if (particle.x < 0) {
           particle.x = 0;
-          particle.vx *= -1;
+          particle.vx *= -0.8; // Dampen on bounce
         } else if (particle.x > canvas.width) {
           particle.x = canvas.width;
-          particle.vx *= -1;
+          particle.vx *= -0.8; // Dampen on bounce
         }
 
         if (particle.y < 0) {
           particle.y = 0;
-          particle.vy *= -1;
+          particle.vy *= -0.8; // Dampen on bounce
         } else if (particle.y > canvas.height) {
           particle.y = canvas.height;
-          particle.vy *= -1;
+          particle.vy *= -0.8; // Dampen on bounce
         }
 
         // Mouse interaction - strong slingshot effect
@@ -114,8 +114,8 @@ export default function CustomParticles() {
           const dy = particle.y - otherParticle.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 40 && dist > 0) {
-            const repelForce = (40 - dist) / 40 * 0.04;
+          if (dist < 60 && dist > 0) {
+            const repelForce = (60 - dist) / 60 * 0.1;
             particle.vx += (dx / dist) * repelForce;
             particle.vy += (dy / dist) * repelForce;
           }
@@ -129,7 +129,7 @@ export default function CustomParticles() {
         const centerDistance = Math.sqrt(toCenterX * toCenterX + toCenterY * toCenterY);
 
         if (centerDistance > 0) {
-          const centerBias = 0.002; // Subtle pull toward center
+          const centerBias = 0.015; // Stronger pull toward center
           particle.vx += (toCenterX / centerDistance) * centerBias;
           particle.vy += (toCenterY / centerDistance) * centerBias;
         }
