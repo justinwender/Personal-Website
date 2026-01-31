@@ -115,7 +115,7 @@ export default function CustomParticles() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 40 && dist > 0) {
-            const repelForce = (40 - dist) / 40 * 0.02;
+            const repelForce = (40 - dist) / 40 * 0.04;
             particle.vx += (dx / dist) * repelForce;
             particle.vy += (dy / dist) * repelForce;
           }
@@ -129,7 +129,7 @@ export default function CustomParticles() {
         const centerDistance = Math.sqrt(toCenterX * toCenterX + toCenterY * toCenterY);
 
         if (centerDistance > 0) {
-          const centerBias = 0.0005; // Very subtle pull toward center
+          const centerBias = 0.002; // Subtle pull toward center
           particle.vx += (toCenterX / centerDistance) * centerBias;
           particle.vy += (toCenterY / centerDistance) * centerBias;
         }
