@@ -39,8 +39,8 @@ export default function CustomParticles() {
 
     // Helper function to create a new particle
     const createParticle = (): Particle => {
-      const baseVx = (Math.random() - 0.5) * 0.5;
-      const baseVy = (Math.random() - 0.5) * 0.5;
+      const baseVx = (Math.random() - 0.5) * 0.8;
+      const baseVy = (Math.random() - 0.5) * 0.8;
       return {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -114,8 +114,8 @@ export default function CustomParticles() {
           const dy = particle.y - otherParticle.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 60 && dist > 0) {
-            const repelForce = (60 - dist) / 60 * 0.2;
+          if (dist < 90 && dist > 0) {
+            const repelForce = (90 - dist) / 90 * 0.2;
             particle.vx += (dx / dist) * repelForce;
             particle.vy += (dy / dist) * repelForce;
           }
