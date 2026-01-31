@@ -12,14 +12,15 @@ export default function Resume() {
               Blockchain Researcher • Data Scientist • Creative Technologist
             </p>
           </div>
-          <button
+          <a
+            href="/resume.pdf"
+            download="Justin_Wender_Resume.pdf"
             className="flex items-center gap-2 px-6 py-3 bg-primary-green text-white font-semibold
                      rounded-lg hover:bg-primary-green-dark transition-colors duration-200 whitespace-nowrap"
-            onClick={() => alert("PDF download coming soon! For now, please contact me directly.")}
           >
             <Download size={20} />
             Download PDF
-          </button>
+          </a>
         </div>
 
         <div className="bg-background-card border border-border rounded-lg p-8 space-y-8">
