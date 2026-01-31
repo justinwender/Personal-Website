@@ -111,27 +111,27 @@ export default function CustomParticles() {
           particle.vy -= (dy / distance) * force * 0.08;
         }
 
-        // Wall repulsion - push particles away from edges
-        const wallMargin = 100; // Distance from wall to start repelling
+        // Wall repulsion - push particles away from edges with stronger force
+        const wallMargin = 150; // Distance from wall to start repelling
 
         // Left wall
         if (particle.x < wallMargin) {
-          const repelForce = (wallMargin - particle.x) / wallMargin * 0.05;
+          const repelForce = (wallMargin - particle.x) / wallMargin * 0.2;
           particle.vx += repelForce;
         }
         // Right wall
         if (particle.x > canvas.width - wallMargin) {
-          const repelForce = (particle.x - (canvas.width - wallMargin)) / wallMargin * 0.05;
+          const repelForce = (particle.x - (canvas.width - wallMargin)) / wallMargin * 0.2;
           particle.vx -= repelForce;
         }
         // Top wall
         if (particle.y < wallMargin) {
-          const repelForce = (wallMargin - particle.y) / wallMargin * 0.05;
+          const repelForce = (wallMargin - particle.y) / wallMargin * 0.2;
           particle.vy += repelForce;
         }
         // Bottom wall
         if (particle.y > canvas.height - wallMargin) {
-          const repelForce = (particle.y - (canvas.height - wallMargin)) / wallMargin * 0.05;
+          const repelForce = (particle.y - (canvas.height - wallMargin)) / wallMargin * 0.2;
           particle.vy -= repelForce;
         }
 
