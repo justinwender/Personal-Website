@@ -111,20 +111,6 @@ export default function CustomParticles() {
           particle.vy -= (dy / distance) * force * 0.08;
         }
 
-        // Anti-clumping: repel particles that get too close
-        particles.forEach((otherParticle, j) => {
-          if (i === j) return;
-          const dx = particle.x - otherParticle.x;
-          const dy = particle.y - otherParticle.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 90 && dist > 0) {
-            const repelForce = (90 - dist) / 90 * 0.2;
-            particle.vx += (dx / dist) * repelForce;
-            particle.vy += (dy / dist) * repelForce;
-          }
-        });
-
         // Wall repulsion - push particles away from edges
         const wallMargin = 100; // Distance from wall to start repelling
 
