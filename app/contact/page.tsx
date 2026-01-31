@@ -3,6 +3,10 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xwppbbjr"; // You'll need to create this form at formspree.io
+const RATE_LIMIT_HOURS = 1;
+const RATE_LIMIT_KEY = "contact_form_last_submission";
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -10,13 +14,72 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error" | "rate_limited">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Integrate with Formspree or EmailJS
-    alert(
-      "Form submission coming soon! For now, please email me directly at wender.j@northeastern.edu"
+  const checkRateLimit = (): boolean => {
+    const lastSubmission = localStorage.getItem(RATE_LIMIT_KEY);
+    if (!lastSubmission) return true;
+
+    const lastSubmissionTime = parseInt(lastSubmission);
+    const hoursSinceLastSubmission = (Date.now() - lastSubmissionTime) / (1000 * 60 * 60);
+
+    return hoursSinceLastSubmission >= RATE_LIMIT_HOURS;
+  };
+
+  const getRemainingTime = (): string => {
+    const lastSubmission = localStorage.getItem(RATE_LIMIT_KEY);
+    if (!lastSubmission) return "";
+
+    const lastSubmissionTime = parseInt(lastSubmission);
+    const minutesRemaining = Math.ceil(
+      (RATE_LIMIT_HOURS * 60) - ((Date.now() - lastSubmissionTime) / (1000 * 60))
     );
+
+    if (minutesRemaining > 60) {
+      return `${Math.ceil(minutesRemaining / 60)} hour(s)`;
+    }
+    return `${minutesRemaining} minute(s)`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Check rate limit
+    if (!checkRateLimit()) {
+      setSubmitStatus("rate_limited");
+      setErrorMessage(`Please wait ${getRemainingTime()} before submitting another message.`);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString());
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage("Failed to send message. Please try again or email me directly.");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+      setErrorMessage("Network error. Please check your connection or email me directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -176,6 +239,27 @@ export default function Contact() {
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Status Messages */}
+              {submitStatus === "success" && (
+                <div className="p-4 bg-primary-green/10 border border-primary-green rounded-lg">
+                  <p className="text-primary-green font-medium">
+                    Message sent successfully! I'll get back to you soon.
+                  </p>
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="p-4 bg-red-500/10 border border-red-500 rounded-lg">
+                  <p className="text-red-400 font-medium">{errorMessage}</p>
+                </div>
+              )}
+
+              {submitStatus === "rate_limited" && (
+                <div className="p-4 bg-yellow-500/10 border border-yellow-500 rounded-lg">
+                  <p className="text-yellow-400 font-medium">{errorMessage}</p>
+                </div>
+              )}
+
               <div>
                 <label
                   htmlFor="name"
@@ -190,8 +274,9 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                   className="w-full px-4 py-3 bg-background-card border border-border rounded-lg focus:ring-2 focus:ring-primary-green
-                           focus:border-transparent outline-none transition-all duration-200 text-text-primary"
+                           focus:border-transparent outline-none transition-all duration-200 text-text-primary disabled:opacity-50"
                   placeholder="Your name"
                 />
               </div>
@@ -210,8 +295,9 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                   className="w-full px-4 py-3 bg-background-card border border-border rounded-lg focus:ring-2 focus:ring-primary-green
-                           focus:border-transparent outline-none transition-all duration-200 text-text-primary"
+                           focus:border-transparent outline-none transition-all duration-200 text-text-primary disabled:opacity-50"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -230,8 +316,9 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                   className="w-full px-4 py-3 bg-background-card border border-border rounded-lg focus:ring-2 focus:ring-primary-green
-                           focus:border-transparent outline-none transition-all duration-200 text-text-primary"
+                           focus:border-transparent outline-none transition-all duration-200 text-text-primary disabled:opacity-50"
                   placeholder="What's this about?"
                 />
               </div>
@@ -249,20 +336,23 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                   rows={6}
                   className="w-full px-4 py-3 bg-background-card border border-border rounded-lg focus:ring-2 focus:ring-primary-green
-                           focus:border-transparent outline-none transition-all duration-200 resize-none text-text-primary"
+                           focus:border-transparent outline-none transition-all duration-200 resize-none text-text-primary disabled:opacity-50"
                   placeholder="Tell me about your project, opportunity, or question..."
                 />
               </div>
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary-green text-white
-                         font-semibold rounded-lg hover:bg-primary-green-dark transition-colors duration-200"
+                         font-semibold rounded-lg hover:bg-primary-green-dark transition-colors duration-200
+                         disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={20} />
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
