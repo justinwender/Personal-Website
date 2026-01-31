@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased flex flex-col min-h-screen">
+      <body className="antialiased flex flex-col min-h-screen bg-background text-text-primary">
         <Header />
         <div className="flex-grow pt-16">{children}</div>
         <Footer />

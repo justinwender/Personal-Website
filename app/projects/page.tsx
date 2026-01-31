@@ -78,7 +78,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200"
+              className="bg-background-card border border-border rounded-lg p-6 hover:shadow-xl hover:shadow-primary-green/10 transition-all duration-200"
             >
               {/* Project Header */}
               <div className="mb-4">
@@ -109,7 +109,7 @@ export default function Projects() {
                 {project.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="px-3 py-1 bg-background-gray text-text-secondary text-sm rounded-md"
+                    className="px-3 py-1 bg-background-dark text-text-secondary text-sm rounded-md"
                   >
                     {tag}
                   </span>

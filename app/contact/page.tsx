@@ -105,7 +105,7 @@ export default function Contact() {
                   href="https://linkedin.com/in/justinwender"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-background-gray rounded-lg hover:bg-primary-green/10 transition-colors duration-200"
+                  className="p-3 bg-background-card rounded-lg hover:bg-primary-green/20 transition-colors duration-200"
                 >
                   <Linkedin className="text-text-primary" size={24} />
                 </a>
@@ -113,7 +113,7 @@ export default function Contact() {
                   href="https://github.com/justinwender"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-background-gray rounded-lg hover:bg-primary-green/10 transition-colors duration-200"
+                  className="p-3 bg-background-card rounded-lg hover:bg-primary-green/20 transition-colors duration-200"
                 >
                   <Github className="text-text-primary" size={24} />
                 </a>
@@ -121,7 +121,7 @@ export default function Contact() {
                   href="https://x.com/wenderjustin"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-background-gray rounded-lg hover:bg-primary-green/10 transition-colors duration-200"
+                  className="p-3 bg-background-card rounded-lg hover:bg-primary-green/20 transition-colors duration-200"
                 >
                   <svg
                     className="text-text-primary"
@@ -137,7 +137,7 @@ export default function Contact() {
                   href="https://t.me/justintod"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-background-gray rounded-lg hover:bg-primary-green/10 transition-colors duration-200"
+                  className="p-3 bg-background-card rounded-lg hover:bg-primary-green/20 transition-colors duration-200"
                 >
                   <svg
                     className="text-text-primary"
@@ -153,7 +153,7 @@ export default function Contact() {
                   href="https://medium.com/@justin.wender"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-background-gray rounded-lg hover:bg-primary-green/10 transition-colors duration-200"
+                  className="p-3 bg-background-card rounded-lg hover:bg-primary-green/20 transition-colors duration-200"
                 >
                   <svg
                     className="text-text-primary"
@@ -190,8 +190,8 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green
-                           focus:border-transparent outline-none transition-all duration-200"
+                  className="w-full px-4 py-3 bg-background-card border border-border rounded-lg focus:ring-2 focus:ring-primary-green
+                           focus:border-transparent outline-none transition-all duration-200 text-text-primary"
                   placeholder="Your name"
                 />
               </div>
@@ -210,8 +210,8 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green
-                           focus:border-transparent outline-none transition-all duration-200"
+                  className="w-full px-4 py-3 bg-background-card border border-border rounded-lg focus:ring-2 focus:ring-primary-green
+                           focus:border-transparent outline-none transition-all duration-200 text-text-primary"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -230,8 +230,8 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green
-                           focus:border-transparent outline-none transition-all duration-200"
+                  className="w-full px-4 py-3 bg-background-card border border-border rounded-lg focus:ring-2 focus:ring-primary-green
+                           focus:border-transparent outline-none transition-all duration-200 text-text-primary"
                   placeholder="What's this about?"
                 />
               </div>
@@ -250,8 +250,8 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green
-                           focus:border-transparent outline-none transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 bg-background-card border border-border rounded-lg focus:ring-2 focus:ring-primary-green
+                           focus:border-transparent outline-none transition-all duration-200 resize-none text-text-primary"
                   placeholder="Tell me about your project, opportunity, or question..."
                 />
               </div>

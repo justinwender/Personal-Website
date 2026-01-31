@@ -52,13 +52,13 @@ export default function Home() {
           </a>
           <a
             href="/resume"
-            className="px-6 py-3 border border-border text-text-primary rounded-lg hover:bg-background-gray transition-colors"
+            className="px-6 py-3 border border-border text-text-primary rounded-lg hover:bg-background-card transition-colors"
           >
             Download Resume
           </a>
           <a
             href="/contact"
-            className="px-6 py-3 border border-border text-text-primary rounded-lg hover:bg-background-gray transition-colors"
+            className="px-6 py-3 border border-border text-text-primary rounded-lg hover:bg-background-card transition-colors"
           >
             Get in Touch
           </a>

@@ -89,7 +89,7 @@ export default function Writing() {
             {publications.map((pub, index) => (
               <div
                 key={index}
-                className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200"
+                className="bg-background-card border border-border rounded-lg p-6 hover:shadow-xl hover:shadow-primary-purple/10 transition-all duration-200"
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                   <div className="flex-1">
@@ -109,7 +109,7 @@ export default function Writing() {
                       {pub.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-3 py-1 bg-background-gray text-text-secondary text-sm rounded-md"
+                          className="px-3 py-1 bg-background-dark text-text-secondary text-sm rounded-md"
                         >
                           {tag}
                         </span>
@@ -148,7 +148,7 @@ export default function Writing() {
             {blogPosts.map((post, index) => (
               <div
                 key={index}
-                className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200"
+                className="bg-background-card border border-border rounded-lg p-6 hover:shadow-xl hover:shadow-primary-purple/10 transition-all duration-200"
               >
                 <div className="mb-2">
                   <h3 className="text-xl font-bold text-text-primary mb-1">{post.title}</h3>
@@ -159,7 +159,7 @@ export default function Writing() {
                   {post.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="px-3 py-1 bg-background-gray text-text-secondary text-sm rounded-md"
+                      className="px-3 py-1 bg-background-dark text-text-secondary text-sm rounded-md"
                     >
                       {tag}
                     </span>

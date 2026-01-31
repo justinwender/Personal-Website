@@ -22,7 +22,7 @@ export default function Resume() {
           </button>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-8 space-y-8">
+        <div className="bg-background-card border border-border rounded-lg p-8 space-y-8">
           {/* Contact Information */}
           <section>
             <div className="flex flex-wrap gap-6 text-text-secondary">
@@ -59,7 +59,7 @@ export default function Resume() {
             </div>
           </section>
 
-          <hr className="border-gray-200" />
+          <hr className="border-border" />
 
           {/* Education */}
           <section>
@@ -91,7 +91,7 @@ export default function Resume() {
             </div>
           </section>
 
-          <hr className="border-gray-200" />
+          <hr className="border-border" />
 
           {/* Experience */}
           <section>
@@ -159,7 +159,7 @@ export default function Resume() {
             </div>
           </section>
 
-          <hr className="border-gray-200" />
+          <hr className="border-border" />
 
           {/* Skills */}
           <section>
@@ -181,7 +181,7 @@ export default function Resume() {
             </div>
           </section>
 
-          <hr className="border-gray-200" />
+          <hr className="border-border" />
 
           {/* Publications */}
           <section>

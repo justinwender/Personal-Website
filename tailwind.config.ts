@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Custom color palette based on planning document
+        // Custom dark theme color palette
         primary: {
           green: {
             light: '#6EE7B7',
@@ -23,15 +23,16 @@ const config: Config = {
           }
         },
         text: {
-          primary: '#111827',
-          secondary: '#6B7280',
+          primary: '#F9FAFB',      // Light text for dark background
+          secondary: '#D1D5DB',     // Lighter gray for secondary text
         },
         background: {
-          DEFAULT: '#FFFFFF',
-          gray: '#F8F9FA',
+          DEFAULT: '#0F172A',       // Dark slate background
+          dark: '#020617',          // Darker slate for cards/sections
+          card: '#1E293B',          // Slate 800 for card backgrounds
         },
         border: {
-          DEFAULT: '#E5E7EB',
+          DEFAULT: '#334155',       // Slate 700 for borders
         }
       },
       fontFamily: {
