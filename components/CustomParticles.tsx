@@ -78,20 +78,21 @@ export default function CustomParticles() {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        // Bounce off walls
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+        // Bounce off walls - clamp position and reverse velocity
+        if (particle.x < 0) {
+          particle.x = 0;
+          particle.vx *= -1;
+        } else if (particle.x > canvas.width) {
+          particle.x = canvas.width;
+          particle.vx *= -1;
+        }
 
-        // Replace particle if it goes way out of bounds (safety mechanism)
-        const margin = 50;
-        if (
-          particle.x < -margin ||
-          particle.x > canvas.width + margin ||
-          particle.y < -margin ||
-          particle.y > canvas.height + margin
-        ) {
-          particles[i] = createParticle();
-          return;
+        if (particle.y < 0) {
+          particle.y = 0;
+          particle.vy *= -1;
+        } else if (particle.y > canvas.height) {
+          particle.y = canvas.height;
+          particle.vy *= -1;
         }
 
         // Mouse interaction - gentle gravitational pull
