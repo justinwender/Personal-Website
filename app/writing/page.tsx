@@ -1,62 +1,12 @@
 import { ExternalLink, BookOpen, FileText } from "lucide-react";
+import { articles } from "@/data/articles";
 
 export default function Writing() {
-  const publications = [
-    {
-      title: "Communication—The Often-Overlooked Keystone to M&A",
-      publication: "The Legal Intelligencer",
-      date: "Published",
-      type: "Article",
-      description:
-        "Analysis of the critical role communication plays in successful mergers and acquisitions, examining how effective stakeholder engagement drives deal outcomes.",
-      tags: ["M&A", "Business Strategy", "Communication"],
-      link: null, // Add actual link
-    },
-    {
-      title: "AI Use Is Exploding",
-      publication: "The Legal Intelligencer",
-      date: "Published",
-      type: "Article",
-      description:
-        "Exploration of the rapid adoption of artificial intelligence across industries, analyzing trends, implications, and future trajectories of AI integration.",
-      tags: ["AI", "Technology", "Industry Analysis"],
-      link: null, // Add actual link
-    },
-    {
-      title: "Gamma Options Protocol: A Deep Dive into DeFi Options Markets",
-      publication: "Research Paper",
-      date: "In Progress",
-      type: "Research",
-      description:
-        "Comprehensive analysis of Gamma's volatility-range automated market maker for DeFi options, examining protocol mechanics, tokenomics, liquidity strategies, and market dynamics.",
-      tags: ["DeFi", "Options", "AMM", "Tokenomics", "Research"],
-      link: null,
-    },
-  ];
-
-  const blogPosts = [
-    {
-      title: "Understanding Tokenomics: Design Principles for Sustainable Crypto Economics",
-      date: "Coming Soon",
-      description:
-        "A deep dive into the fundamental principles of token economic design, exploring incentive mechanisms, supply dynamics, and long-term sustainability.",
-      tags: ["Tokenomics", "Crypto Economics", "Protocol Design"],
-    },
-    {
-      title: "Governance Models in Web3: DAOs vs. Hybrid Structures",
-      date: "Coming Soon",
-      description:
-        "Comparative analysis of different governance approaches in blockchain protocols, examining trade-offs between decentralization and efficiency.",
-      tags: ["Governance", "DAOs", "Web3"],
-    },
-    {
-      title: "Digital Asset Risk Assessment: A Framework for Institutional Investors",
-      date: "Coming Soon",
-      description:
-        "Practical framework for evaluating digital assets from an institutional risk perspective, covering security, liquidity, and operational considerations.",
-      tags: ["Risk Management", "Institutional Crypto", "Investment"],
-    },
-  ];
+  // Filter articles by type
+  const publications = articles.filter(
+    (article) => article.type === "publication" || article.type === "research"
+  );
+  const blogPosts = articles.filter((article) => article.type === "blog");
 
   return (
     <main className="min-h-screen bg-background py-24 px-8">
@@ -102,23 +52,13 @@ export default function Writing() {
                       )}
                     </div>
                     <p className="text-sm font-medium text-primary-purple mb-3">
-                      {pub.publication} • {pub.type}
+                      {pub.publication} • {pub.date}
                     </p>
                     <p className="text-text-secondary mb-4">{pub.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {pub.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className="px-3 py-1 bg-background-dark text-text-secondary text-sm rounded-md"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
-                  {pub.link ? (
+                  {pub.url && pub.url !== "" ? (
                     <a
-                      href={pub.link}
+                      href={pub.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-4 py-2 bg-primary-green text-white font-semibold
@@ -150,21 +90,23 @@ export default function Writing() {
                 key={index}
                 className="bg-background-card border border-border rounded-lg p-6 hover:shadow-xl hover:shadow-primary-purple/10 transition-all duration-200"
               >
-                <div className="mb-2">
-                  <h3 className="text-xl font-bold text-text-primary mb-1">{post.title}</h3>
-                  <p className="text-sm text-text-secondary italic">{post.date}</p>
+                <div className="mb-2 flex items-start justify-between gap-2">
+                  <div>
+                    <h3 className="text-xl font-bold text-text-primary mb-1">{post.title}</h3>
+                    <p className="text-sm text-text-secondary italic">{post.publication} • {post.date}</p>
+                  </div>
+                  {post.url && post.url !== "" && (
+                    <a
+                      href={post.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-green hover:text-primary-green-dark"
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                  )}
                 </div>
                 <p className="text-text-secondary mb-4">{post.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-3 py-1 bg-background-dark text-text-secondary text-sm rounded-md"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             ))}
           </div>

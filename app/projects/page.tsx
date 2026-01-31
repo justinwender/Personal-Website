@@ -1,68 +1,7 @@
 import { ExternalLink, Github } from "lucide-react";
+import { projects } from "@/data/projects";
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "Optimum VM Memory Visualization",
-      category: "Data Science • Blockchain Infrastructure",
-      description:
-        "Interactive Shiny application for visualizing virtual machine memory allocation in blockchain infrastructure. Winner of Optimum's internal hackathon, this tool provides real-time insights into memory usage patterns and optimization opportunities.",
-      tags: ["R", "Shiny", "Data Visualization", "Blockchain"],
-      status: "Live",
-      github: null, // Add when repo is public
-      demo: null, // Add when deployed
-    },
-    {
-      title: "Gamma Options Protocol Analysis",
-      category: "DeFi Research • Tokenomics",
-      description:
-        "Comprehensive research analyzing Gamma's volatility-range automated market maker (AMM) for DeFi options. Deep dive into protocol mechanics, tokenomics design, liquidity provision strategies, and risk assessment. Research paper in progress.",
-      tags: ["DeFi", "Options", "AMM", "Tokenomics", "Research"],
-      status: "In Progress",
-      github: null,
-      demo: null,
-    },
-    {
-      title: "Fireblocks Digital Asset Risk Framework",
-      category: "Risk Assessment • Institutional Crypto",
-      description:
-        "Developed comprehensive risk assessment framework for evaluating digital assets at Fireblocks. Specialized in proof-of-stake token analysis, DeFi protocol security evaluation, and MPC wallet architecture risk modeling.",
-      tags: ["Risk Management", "Proof-of-Stake", "DeFi", "Security"],
-      status: "Completed",
-      github: null,
-      demo: null,
-    },
-    {
-      title: "TRGC Liquid Fund Research",
-      category: "Portfolio Management • Token Analysis",
-      description:
-        "Conducted research for a $10 million digital asset liquid fund at The Rekt Group Capital. Analyzed token fundamentals, portfolio optimization strategies, market dynamics, and developed quantitative models for asset allocation.",
-      tags: ["Portfolio Optimization", "Token Analysis", "Quantitative Research"],
-      status: "Completed",
-      github: null,
-      demo: null,
-    },
-    {
-      title: "NEU Blockchain Governance Research",
-      category: "Academic Research • Protocol Design",
-      description:
-        "Leading research initiative analyzing governance models in blockchain protocols. Comparative study of DAO vs. hybrid vs. centralized governance structures, examining trade-offs in decentralization, efficiency, and stakeholder alignment.",
-      tags: ["Governance", "DAOs", "Protocol Design", "Research"],
-      status: "In Progress",
-      github: null,
-      demo: null,
-    },
-    {
-      title: "Optimum Community Content & Education",
-      category: "Technical Writing • Developer Relations",
-      description:
-        "Creating technical explainers and educational content for the Optimum community. Topics include Random Linear Network (RLN), memory layers, blockchain infrastructure, and protocol mechanics.",
-      tags: ["Technical Writing", "Education", "Community"],
-      status: "Ongoing",
-      github: null,
-      demo: null,
-    },
-  ];
 
   return (
     <main className="min-h-screen bg-background py-24 px-8">
@@ -86,19 +25,18 @@ export default function Projects() {
                   <h2 className="text-2xl font-bold text-text-primary">{project.title}</h2>
                   <span
                     className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                      project.status === "Live"
+                      project.status === "Active"
                         ? "bg-green-100 text-green-800"
                         : project.status === "In Progress"
                         ? "bg-blue-100 text-blue-800"
-                        : project.status === "Ongoing"
-                        ? "bg-purple-100 text-purple-800"
-                        : "bg-gray-100 text-gray-800"
+                        : project.status === "Completed"
+                        ? "bg-gray-100 text-gray-800"
+                        : "bg-purple-100 text-purple-800"
                     }`}
                   >
                     {project.status}
                   </span>
                 </div>
-                <p className="text-sm font-medium text-primary-purple">{project.category}</p>
               </div>
 
               {/* Project Description */}
@@ -118,9 +56,9 @@ export default function Projects() {
 
               {/* Links */}
               <div className="flex gap-4">
-                {project.github && (
+                {project.githubUrl && project.githubUrl !== "" && (
                   <a
-                    href={project.github}
+                    href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-primary-green hover:text-primary-green-dark
@@ -130,9 +68,9 @@ export default function Projects() {
                     <span className="font-medium">View Code</span>
                   </a>
                 )}
-                {project.demo && (
+                {project.demoUrl && project.demoUrl !== "" && (
                   <a
-                    href={project.demo}
+                    href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-primary-purple hover:text-primary-purple-light
@@ -142,7 +80,8 @@ export default function Projects() {
                     <span className="font-medium">Live Demo</span>
                   </a>
                 )}
-                {!project.github && !project.demo && (
+                {(!project.githubUrl || project.githubUrl === "") &&
+                 (!project.demoUrl || project.demoUrl === "") && (
                   <span className="text-text-secondary text-sm italic">
                     Links coming soon
                   </span>
